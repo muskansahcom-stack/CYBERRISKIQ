@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "organizations": {
+      "title": "Organization",
+      "description": "Enterprise tenant record for isolation",
+      "type": "object",
+      "properties": {
+        "organization_id": { "type": "string" },
+        "organization_name": { "type": "string" },
+        "industry": { "type": "string" },
+        "created_at": { "type": "string" },
+        "status": { "type": "string" },
+        "created_by": { "type": "string" }
+      },
+      "required": ["organization_id", "organization_name", "created_at", "status"]
+    },
+    "users": {
+      "title": "User Profile",
+      "description": "User profile with role and organization mapping",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "authentication_uid": { "type": "string" },
+        "organization_id": { "type": "string" },
+        "full_name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "status": { "type": "string" },
+        "created_at": { "type": "string" },
+        "last_login": { "type": "string" }
+      },
+      "required": ["user_id", "organization_id", "email", "role", "status"]
+    },
+    "cyber_assets": {
+      "title": "Cyber Asset",
+      "description": "Tenant enterprise digital asset with criticality and financial valuation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organization_id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "criticality": { "type": "string" },
+        "assetValue": { "type": "number" },
+        "owner": { "type": "string" },
+        "department": { "type": "string" },
+        "dataClassification": { "type": "string" },
+        "calculatedEAL": { "type": "number" }
+      },
+      "required": ["id", "organization_id", "name", "category", "criticality", "assetValue"]
+    },
+    "vulnerabilities": {
+      "title": "Vulnerability",
+      "description": "CVE vulnerability record with EPSS and remediation tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organization_id": { "type": "string" },
+        "cveId": { "type": "string" },
+        "title": { "type": "string" },
+        "severity": { "type": "string" },
+        "cvssScore": { "type": "number" },
+        "epssScore": { "type": "number" },
+        "status": { "type": "string" },
+        "affectedAssets": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "organization_id", "cveId", "severity", "status"]
+    },
+    "security_controls": {
+      "title": "Security Control",
+      "description": "NIST CSF / ISO / SEBI CSCRF defensive security control",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organization_id": { "type": "string" },
+        "framework": { "type": "string" },
+        "identifier": { "type": "string" },
+        "title": { "type": "string" },
+        "implementationStatus": { "type": "string" },
+        "effectivenessScore": { "type": "number" }
+      },
+      "required": ["id", "organization_id", "framework", "identifier", "implementationStatus"]
+    },
+    "audit_logs": {
+      "title": "Audit Log",
+      "description": "Immutable security and access event record",
+      "type": "object",
+      "properties": {
+        "audit_id": { "type": "string" },
+        "organization_id": { "type": "string" },
+        "actor_user_id": { "type": "string" },
+        "actor_email": { "type": "string" },
+        "action": { "type": "string" },
+        "resource_type": { "type": "string" },
+        "resource_id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "result": { "type": "string" }
+      },
+      "required": ["audit_id", "organization_id", "actor_email", "action", "timestamp", "result"]
+    }
+  }
+}
